@@ -5,9 +5,11 @@ import PostList from '../../ui/PostList';
 
 export default function PostsPage() {
   return (
-    <PostContextProvider>
+    // <PostContextProvider>
+    <>
       <MyForm />
       <PostList />
-    </PostContextProvider>
+    </>
+  // </PostContextProvider>
   );
 }

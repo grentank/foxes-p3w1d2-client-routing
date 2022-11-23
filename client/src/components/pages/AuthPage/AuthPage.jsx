@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Button,
   Col, Form, Input, Label, Row,
 } from 'reactstrap';
 import { UserContext } from '../../../contexts/UserContext';
+import { submitLogin } from '../../../redux/actions/userActions';
 
 export default function AuthPage() {
-  const { loginHandler } = useContext(UserContext);
+  // const { loginHandler } = useContext(UserContext);
+  const dispatch = useDispatch();
   return (
     <Row>
-      <Form onSubmit={loginHandler}>
+      <Form onSubmit={(e) => dispatch(submitLogin(e))}>
         <Row className="row-cols-lg-auto g-3 align-items-center">
           <Col>
             <Label

@@ -15,7 +15,8 @@ function UserContextProvider({ children }) {
   useEffect(() => {
     setTimeout(() => {
       axios.get('/auth/check')
-        .then((res) => setUser(res.data));
+        .then((res) => setUser(res.data))
+        .catch(() => setUser({}));
     }, 500);
   }, []);
 

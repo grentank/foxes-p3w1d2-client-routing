@@ -11,10 +11,15 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserContext } from '../../../contexts/UserContext';
+import { logoutUser } from '../../../redux/actions/userActions';
 
 function NavBar(args) {
-  const { user, logoutHandler } = useContext(UserContext);
+  const user = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(true);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -36,10 +41,13 @@ function NavBar(args) {
               <Link to="/posts">Posts</Link>
             </NavItem>
             <NavItem>
+              <Link to="/counter">Counter</Link>
+            </NavItem>
+            <NavItem>
               <Link to="/admin">Admin</Link>
             </NavItem>
             <NavItem>
-              <Button onClick={logoutHandler} className="btn-info">Logout</Button>
+              <Button onClick={() => dispatch(logoutUser())} className="btn-info">Logout</Button>
             </NavItem>
           </Nav>
           <NavbarText>

@@ -24,7 +24,7 @@ router.get('/check', (req, res) => {
   if (req.session?.user) {
     return res.json(req.session.user);
   }
-  return res.json({});
+  return res.sendStatus(401);
 });
 
 router.get('/logout', (req, res) => {
